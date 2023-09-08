@@ -79,6 +79,11 @@ public class VistaMenuFormularioInscripcion extends javax.swing.JInternalFrame {
         jButton2.setText("Anular Inscripcion");
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,6 +186,10 @@ public class VistaMenuFormularioInscripcion extends javax.swing.JInternalFrame {
     private void jComboBox1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jComboBox1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ComponentAdded
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
