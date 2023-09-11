@@ -6,7 +6,11 @@
 package universidadejemplo;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.Month;
+import universidadejemplo.AccesoaDatos.AlumnoData;
 import universidadejemplo.AccesoaDatos.Conexion;
+import universidadejemplo.Entidades.Alumno;
 
 /**
  *
@@ -20,8 +24,12 @@ public class UniversidadEjemplo {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Connection con = Conexion.getConexion();
+        Alumno juan = new Alumno(1,123123123,"Sanches","victor", LocalDate.of(1980, 4, 25),true);
+        AlumnoData alu= new AlumnoData();
         
+        //alu.guardarAlumno(juan);
+        
+        alu.modificarAlumno(juan);
     }
     
 }
