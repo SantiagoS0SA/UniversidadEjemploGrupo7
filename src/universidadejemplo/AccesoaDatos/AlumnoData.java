@@ -2,14 +2,12 @@
 package universidadejemplo.AccesoaDatos;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Alumno;
 
 /**
  *
- * @author Usuario
+ * @author IgnacioBenavides
  */
 public class AlumnoData {
     private Connection con = null;
