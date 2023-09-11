@@ -5,6 +5,9 @@
  */
 package universidadejemplo;
 
+import java.sql.*;
+import universidadejemplo.AccesoaDatos.Conexion;
+
 /**
  *
  * @author Pc
@@ -16,6 +19,9 @@ public class UniversidadEjemplo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Connection con = Conexion.getConexion();
+        
     }
     
 }
