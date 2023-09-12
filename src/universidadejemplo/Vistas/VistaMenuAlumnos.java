@@ -63,7 +63,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Fecha de Nacimiento:");
 
-        jButton1.setText("Nuevo");
+        jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -72,7 +72,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
 
         jButton2.setText("Eliminar");
 
-        jButton3.setText("Guardar");
+        jButton3.setText("Actualizar");
 
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
