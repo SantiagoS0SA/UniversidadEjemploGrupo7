@@ -2,6 +2,8 @@
 package universidadejemplo.AccesoaDatos;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Alumno;
 
@@ -39,7 +41,7 @@ public class AlumnoData {
             
                 alumno.setIdAlumno(rs.getInt(1));
                 
-                JOptionPane.showMessageDialog(null,"Alumno agregado"+ rs);
+                JOptionPane.showMessageDialog(null,"Alumno agregado");
             }
             
         } catch (SQLException ex) {
@@ -65,7 +67,7 @@ public class AlumnoData {
             int exito = ps.executeUpdate();
             
             if(exito==1){
-                JOptionPane.showMessageDialog(null,"Alumno Modificado"+ps);
+                JOptionPane.showMessageDialog(null,"Alumno Modificado");
             }
             
             
@@ -92,5 +94,26 @@ public class AlumnoData {
     
     }
     
+    public boolean ValidacionDni(int dni){
     
+    String sql = "SELECT COUNT(*) FROM alumnos WHERE dni = ?";
+    
+    try{
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, dni);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs.next()){
+            int count = rs.getInt(1);
+            return count > 0;
+        }
+        
+        
+    }catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    return  false;
+    
+    }
 }

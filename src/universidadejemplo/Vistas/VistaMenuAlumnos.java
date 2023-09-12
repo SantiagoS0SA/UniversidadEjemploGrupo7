@@ -5,12 +5,20 @@
  */
 package universidadejemplo.Vistas;
 
+import java.awt.Color;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
+import universidadejemplo.AccesoaDatos.AlumnoData;
+import universidadejemplo.Entidades.Alumno;
+
 /**
  *
  * @author Pc
  */
 public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
-
+    private Alumno alumno = new Alumno();
+    private AlumnoData alu = new AlumnoData();
     /**
      * Creates new form VistaMenuAlumnos
      */
@@ -34,9 +42,9 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jAgregar = new javax.swing.JButton();
+        jEliminar = new javax.swing.JButton();
+        jActualizar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jDni = new javax.swing.JTextField();
@@ -44,6 +52,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jNombre = new javax.swing.JTextField();
         jBoolean = new javax.swing.JRadioButton();
         jDateN = new com.toedter.calendar.JDateChooser();
+        jError = new javax.swing.JLabel();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -63,16 +72,16 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Fecha de Nacimiento:");
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jAgregar.setText("Agregar");
+        jAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jAgregarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Eliminar");
+        jEliminar.setText("Eliminar");
 
-        jButton3.setText("Actualizar");
+        jActualizar.setText("Actualizar");
 
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +98,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jError.setText("Errores encontrado : 0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,11 +113,13 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(jButton1)
+                                .addComponent(jAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
+                                .addComponent(jEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3))
+                                .addComponent(jActualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,28 +139,35 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addComponent(jApellido, javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jButton4))))
-                .addGap(66, 66, 66))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jError)
+                                                    .addGap(156, 156, 156))
+                                                .addComponent(jDni, javax.swing.GroupLayout.Alignment.LEADING)))))))
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton5)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jLabel2)
-                    .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jError)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,11 +179,11 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jDateN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(jAgregar)
+                    .addComponent(jEliminar)
+                    .addComponent(jActualizar)
                     .addComponent(jButton4))
                 .addContainerGap())
         );
@@ -171,9 +191,42 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            int dni = Integer.parseInt(jDni.getText());
+            String apellido = jApellido.getText();
+            String nombre = jNombre.getText();
+            boolean boton = jBoolean.isSelected();
+            LocalDate fechaN = jDateN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            
+            if(alu.ValidacionDni(dni)){
+                jError.setForeground(Color.RED);
+                jError.setText("Errores encontrados: 1");
+            }else{
+             alumno.setDni(dni);
+            alumno.setApellido(apellido);
+            alumno.setNombre(nombre);
+            alumno.setFechaNac(fechaN);
+            alumno.setActivo(boton);
+            
+            alu.guardarAlumno(alumno);
+            
+            jError.setForeground(Color.GREEN);
+            jError.setText("No se encontro errores");
+            
+            jNombre.setText("");
+            jApellido.setText("");
+            jDateN.setDate(null);
+            jDni.setText("");
+            } 
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Numero de Dni no valido, profavor chequear el dni ingresado"+ e);
+        }
+      
+        
+       
+    }//GEN-LAST:event_jAgregarActionPerformed
 
     private void jDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDniActionPerformed
         // TODO add your handling code here:
@@ -185,15 +238,16 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jActualizar;
+    private javax.swing.JButton jAgregar;
     private javax.swing.JTextField jApellido;
     private javax.swing.JRadioButton jBoolean;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateN;
     private javax.swing.JTextField jDni;
+    private javax.swing.JButton jEliminar;
+    private javax.swing.JLabel jError;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
