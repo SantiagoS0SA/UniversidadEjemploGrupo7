@@ -6,7 +6,6 @@
 package universidadejemplo.Vistas;
 
 import java.awt.Color;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
