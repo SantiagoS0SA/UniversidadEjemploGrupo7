@@ -2,6 +2,7 @@
 package universidadejemplo.AccesoaDatos;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -110,10 +111,46 @@ public class AlumnoData {
         
         
     }catch (SQLException ex) {
-            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Alumno");    
     }
     
     return  false;
     
+    }
+    
+    public Alumno obtenerAlumnoPorId(int idAlumno){
+    
+        String sql = "SELECT * FROM alumnos WHERE idAlumno = ?";
+        Alumno alumno = null;
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                int id = rs.getInt("idAlumno");
+                int dni = rs.getInt("dni");
+                String apellido = rs.getString("apellido");
+                String nombre = rs.getString("nombre");
+                Date fechaND = rs.getDate("fechaNacimiento");
+                LocalDate fechaN = fechaND.toLocalDate();
+                boolean estado = rs.getBoolean("estado");
+                
+                alumno = new Alumno();
+                alumno.setIdAlumno(idAlumno);
+                alumno.setDni(dni);
+                alumno.setApellido(apellido);
+                 alumno.setNombre(nombre);
+                alumno.setFechaNac(fechaN);
+                alumno.setActivo(estado);
+                
+            }
+            
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Alumno");
+        }
+        return alumno;
     }
 }
