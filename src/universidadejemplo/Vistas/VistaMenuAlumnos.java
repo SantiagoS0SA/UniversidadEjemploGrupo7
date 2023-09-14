@@ -326,9 +326,9 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             Date fch= jDateN.getDate();
             boolean boton = jBoolean.isSelected();
 
-            // Resto del código de validación...
+            //  código de validación...
             if(dniText.isEmpty() || !dniText.matches("\\d+")){
-                JOptionPane.showMessageDialog(null, "error :/");
+                JOptionPane.showMessageDialog(null, "verifique la casilla del Dni");
             }
             
             
