@@ -353,13 +353,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             
             Instant intal = fch.toInstant();
             LocalDate fc = intal.atZone(ZoneId.systemDefault()).toLocalDate();
-            boolean vali = false;
-           if(boton){
-               vali = true;
-           }else{
-               vali=false;
-           }
             
+           
             int dni = Integer.parseInt(dniText);
             // Crear un nuevo objeto Alumno con los datos actualizados
             Alumno alumnoActualizado = new Alumno();
@@ -368,7 +363,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             alumnoActualizado.setApellido(apellido);
             alumnoActualizado.setNombre(nombre);
             alumnoActualizado.setFechaNac(fc);
-            alumnoActualizado.setActivo(vali);
+            alumnoActualizado.setActivo(boton);
 
             // Llamar al método para modificar el alumno
             alu.modificarAlumno(alumnoActualizado);
