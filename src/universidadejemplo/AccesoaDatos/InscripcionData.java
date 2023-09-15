@@ -6,12 +6,12 @@
 package universidadejemplo.AccesoaDatos;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import universidadejemplo.Entidades.Inscripcion;
 
 /**
  *
@@ -27,31 +27,32 @@ public class InscripcionData {
     }
     
     public void guardarinscripcion(Inscripcion insc){
-        String sql = "INSERT INTO inscripcion (alumno, materia, nota)"
+        String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria)"
                 + "VALUES (?, ?, ?)";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
-            ps.setInt(1, aluData.getDni());
-            ps.setString(2, aluData.getApellido());
-            ps.setString(3, aluData.getNombre());
-            ps.setDate(4, matData.;
-            ps.setBoolean(5, alumno.isActivo());
+            ps.setInt(1, insc.getAlumno().getIdAlumno());
+            ps.setInt(2, insc.getMateria().getIdMateria());
+            ps.setDouble(3, insc.getNota());
+           
             ps.executeUpdate();
             
             ResultSet rs = ps.getGeneratedKeys();
             
             if(rs.next()){
             
-                alumno.setIdAlumno(rs.getInt(1));
+                insc.setIdInscripcion(rs.getInt(1));
                 
-                JOptionPane.showMessageDialog(null,"Alumno agregado"+ rs);
+                JOptionPane.showMessageDialog(null,"Inscripcion Registrada");
             }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Alumno"+ ex);
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Inscripcion"+ ex);
         }
         
     }
+    
+    
 }

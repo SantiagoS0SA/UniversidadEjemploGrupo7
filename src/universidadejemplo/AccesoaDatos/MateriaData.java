@@ -71,7 +71,7 @@ public class MateriaData {
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("anioMateria"));
-                materia.setEstado(true);
+                materia.setActivo(true);
                 
                 }else{
                     JOptionPane.showMessageDialog(null, "No existe el alumno");
@@ -128,8 +128,8 @@ public class MateriaData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("anioMateria"));
-                materia.setEstado(rs.getBoolean("estado"));
-                materias.add(materia);
+                materia.setActivo(rs.getBoolean("estado"));
+                //materia.(materia);
             }
             ps.close();
         }catch (SQLException exe){
