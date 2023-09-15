@@ -28,6 +28,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         initComponents();
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);
+        
     }
 
     /**
@@ -49,7 +50,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jAgregar = new javax.swing.JButton();
         jEliminar = new javax.swing.JButton();
         jActualizar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jSalir = new javax.swing.JButton();
         jBuscar = new javax.swing.JButton();
         jDni = new javax.swing.JTextField();
         jApellido = new javax.swing.JTextField();
@@ -100,10 +101,10 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jSalir.setText("Salir");
+        jSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jSalirActionPerformed(evt);
             }
         });
 
@@ -175,7 +176,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jActualizar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)))
+                                .addComponent(jSalir)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -219,7 +220,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jEliminar)
                             .addComponent(jAgregar)
                             .addComponent(jActualizar)
-                            .addComponent(jButton4)))
+                            .addComponent(jSalir)))
                     .addComponent(jLabel7))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -275,9 +276,10 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDniActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new VistaMenuAlumnos().dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
+        
+        dispose();
+    }//GEN-LAST:event_jSalirActionPerformed
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         // TODO add your handling code here:
@@ -413,7 +415,6 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jApellido;
     private javax.swing.JRadioButton jBoolean;
     private javax.swing.JButton jBuscar;
-    private javax.swing.JButton jButton4;
     private com.toedter.calendar.JDateChooser jDateN;
     private javax.swing.JTextField jDni;
     private javax.swing.JButton jEliminar;
@@ -427,6 +428,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jNombre;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JButton jSalir;
     private javax.swing.JTextField jidAlumno;
     // End of variables declaration//GEN-END:variables
 }
