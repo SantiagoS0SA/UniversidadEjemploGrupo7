@@ -87,6 +87,11 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         });
 
         jEliminar.setText("Eliminar");
+        jEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEliminarActionPerformed(evt);
+            }
+        });
 
         jActualizar.setText("Actualizar");
         jActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -214,11 +219,9 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                             .addComponent(jEliminar)
                             .addComponent(jAgregar)
                             .addComponent(jActualizar)
-                            .addComponent(jButton4))
-                        .addContainerGap(75, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton4)))
+                    .addComponent(jLabel7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -367,6 +370,40 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
     }
         
     }//GEN-LAST:event_jActualizarActionPerformed
+
+    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+        
+            int id = Integer.parseInt(jidAlumno.getText());
+            
+            Alumno eliminarAlumno = alu.obtenerAlumnoPorId(id);
+            
+            if(eliminarAlumno != null){
+                
+                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Estas seguro de que deseas eliminar a : "+eliminarAlumno.getApellido()
+                + " "+eliminarAlumno.getNombre()+ "?",
+                        "Confirmar Eliminacion",
+                        JOptionPane.YES_NO_OPTION
+                        );
+                
+                if(confirmacion == JOptionPane.YES_OPTION){
+                    alu.eliminarAlumno(id);
+                    jDni.setText("");
+                    jApellido.setText("");
+                    jNombre.setText("");
+                    jDateN.setDate(null);
+                    jBoolean.setSelected(false);
+                }else{
+                    JOptionPane.showMessageDialog(null, "no se encontro el Alumno a eliminar");
+                }
+            
+            }
+        
+        }catch(NumberFormatException e ){
+            JOptionPane.showMessageDialog(null, "Id de alumno no valido");
+        }
+    }//GEN-LAST:event_jEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
