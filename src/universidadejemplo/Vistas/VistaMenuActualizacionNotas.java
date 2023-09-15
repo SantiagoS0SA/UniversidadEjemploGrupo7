@@ -32,7 +32,7 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jSalirM = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 0));
@@ -57,7 +57,12 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
 
         jButton1.setText("Guardar");
 
-        jButton2.setText("Salir");
+        jSalirM.setText("Salir");
+        jSalirM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSalirMActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -83,7 +88,7 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
                         .addGap(165, 165, 165)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(jSalirM)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,20 +105,25 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jSalirM))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jSalirMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirMActionPerformed
+           // TODO add your handling code here:
+           dispose();
+    }//GEN-LAST:event_jSalirMActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jSalirM;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
