@@ -115,6 +115,11 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
+        jDni.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDniMouseClicked(evt);
+            }
+        });
         jDni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jDniActionPerformed(evt);
@@ -237,6 +242,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             boolean boton = jBoolean.isSelected();
             LocalDate fechaN = jDateN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             
+            
             if(alu.ValidacionDni(dni)){
                 jError.setForeground(Color.RED);
                 jError.setText("Este dni ya esta en la Base de datos");
@@ -245,6 +251,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 jApellido.setText("");
                 jDateN.setDate(null);
                 jDni.setText("");
+                jidAlumno.setEditable(true);
             }else{
              alumno.setDni(dni);
             alumno.setApellido(apellido);
@@ -262,10 +269,14 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 jApellido.setText("");
                 jDateN.setDate(null);
                 jDni.setText("");
-           
+           jidAlumno.setEditable(true);
             } 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Numero de Dni no valido, profavor chequear el dni ingresado"+ e);
+            JOptionPane.showMessageDialog(null, "Numero de Dni no valido, profavor chequear el dni ingresado");
+            jidAlumno.setEditable(true);
+        } catch(NullPointerException e ){
+            JOptionPane.showMessageDialog(null, "Complete los campos vacios. Por Favor");
+            jidAlumno.setEditable(true);
         }
       
         
@@ -303,6 +314,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                jActualizar.setEnabled(true);
                jEliminar.setEnabled(true);
                jAgregar.setEnabled(false);
+               jError.setForeground(null);
+               jError.setText("Errores Encontrados: 0");
            }else{
                JOptionPane.showMessageDialog(null, "Alumno no encontrado");
                
@@ -330,7 +343,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             String nombre = jNombre.getText();
             Date fch= jDateN.getDate();
             boolean boton = jBoolean.isSelected();
-
+            
+            
             //  código de validación...
             if(dniText.isEmpty() || !dniText.matches("\\d+")){
                 JOptionPane.showMessageDialog(null, "verifique la casilla del Dni");
@@ -339,8 +353,12 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             
             Instant intal = fch.toInstant();
             LocalDate fc = intal.atZone(ZoneId.systemDefault()).toLocalDate();
-            
-           
+            boolean vali = false;
+           if(boton){
+               vali = true;
+           }else{
+               vali=false;
+           }
             
             int dni = Integer.parseInt(dniText);
             // Crear un nuevo objeto Alumno con los datos actualizados
@@ -350,7 +368,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             alumnoActualizado.setApellido(apellido);
             alumnoActualizado.setNombre(nombre);
             alumnoActualizado.setFechaNac(fc);
-            alumnoActualizado.setActivo(boton);
+            alumnoActualizado.setActivo(vali);
 
             // Llamar al método para modificar el alumno
             alu.modificarAlumno(alumnoActualizado);
@@ -362,6 +380,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             jApellido.setText("");
             jDateN.setDate(null);
             jDni.setText("");
+            jAgregar.setEnabled(true);
+            jidAlumno.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo actualizar. Debe buscar un ID antes de actualizar.");
         }
@@ -369,6 +389,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(null, "Número de DNI no válido. Por favor, verifique el DNI ingresado.");
     } catch (NullPointerException e) {
         JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
+        jAgregar.setEnabled(true);
     }
         
     }//GEN-LAST:event_jActualizarActionPerformed
@@ -396,6 +417,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                     jNombre.setText("");
                     jDateN.setDate(null);
                     jBoolean.setSelected(false);
+                    jAgregar.setEnabled(true);
+                    jidAlumno.setText("");
                 }else{
                     JOptionPane.showMessageDialog(null, "se Cancelo la operacion");
                 }
@@ -406,6 +429,14 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Id de alumno no valido");
         }
     }//GEN-LAST:event_jEliminarActionPerformed
+
+    private void jDniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDniMouseClicked
+        // TODO add your handling code here:
+        jActualizar.setEnabled(false);
+        jEliminar.setEnabled(false);
+        jAgregar.setEnabled(true);
+        jidAlumno.setEditable(false);
+    }//GEN-LAST:event_jDniMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
