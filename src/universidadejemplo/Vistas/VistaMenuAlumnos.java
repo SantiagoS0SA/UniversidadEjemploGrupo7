@@ -395,7 +395,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                     jDateN.setDate(null);
                     jBoolean.setSelected(false);
                 }else{
-                    JOptionPane.showMessageDialog(null, "no se encontro el Alumno a eliminar");
+                    JOptionPane.showMessageDialog(null, "se Cancelo la operacion");
                 }
             
             }
