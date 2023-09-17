@@ -5,12 +5,11 @@
  */
 package universidadejemplo;
 
-import java.sql.*;
-import java.time.LocalDate;
-import java.time.Month;
-import universidadejemplo.AccesoaDatos.AlumnoData;
-import universidadejemplo.AccesoaDatos.Conexion;
-import universidadejemplo.Entidades.Alumno;
+//import java.sql.*;
+//import java.time.LocalDate;
+//import java.time.Month;
+import universidadejemplo.AccesoaDatos.*;
+import universidadejemplo.Entidades.*;
 
 /**
  *
@@ -24,7 +23,7 @@ public class UniversidadEjemplo {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //EJEMPLOS PARA VER SI FUNCIONA LA CONEXION DE BASE DE DATOS
+        //EJEMPLOS PARA VER SI FUNCIONA LA CONEXION DE BASE DE DATOS ALUMNO DATA
         
         //Alumno juan = new Alumno(1,123123123,"Sanches","victor", LocalDate.of(1980, 4, 25),true);
         //AlumnoData alu= new AlumnoData();
@@ -35,7 +34,17 @@ public class UniversidadEjemplo {
        
        //alu.eliminarAlumno(1);
        
-       //FIN DE EJEMPLOS
+       Materia matematicas = new Materia(1,"Java",2021,true);
+       MateriaData nuevo = new MateriaData();
+       
+       //nuevo.guardarMateria(matematicas);
+       //nuevo.buscarMateria(1);
+       //nuevo.modificarMateria(matematicas);
+       nuevo.eliminarMateria(1);
+       
+       //FIN DE EJEMPLOS ALUMNO DATA
+       
+       
        
     }
     
