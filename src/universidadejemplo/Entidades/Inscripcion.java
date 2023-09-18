@@ -26,7 +26,7 @@ public class Inscripcion {
         this.nota = nota;
     }
 
-    public Inscripcion(Alumno alumno, Materia materia, double nota) {
+    public Inscripcion( double nota,Alumno alumno, Materia materia) {
         this.alumno = alumno;
         this.materia = materia;
         this.nota = nota;
@@ -66,7 +66,7 @@ public class Inscripcion {
 
     @Override
     public String toString() {
-        String insc=idInscripcion+" " +alumno.getApellido()+"," +alumno.getNombre()+" " +materia.getNombre();
+        String insc=idInscripcion+"-"+alumno.toString()+"-" +materia.toString();
         
         
         return insc;

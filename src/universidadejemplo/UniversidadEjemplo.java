@@ -51,12 +51,11 @@ public class UniversidadEjemplo {
        InscripcionData id = new InscripcionData();
        
        Alumno victor = ad.obtenerAlumnoPorId(1);
-       Materia mate = md.buscarMateria(3);
-       Inscripcion insc = new Inscripcion(victor,mate,10);
+       Materia mate = md.buscarMateria(1);
+       Inscripcion insc = new Inscripcion(2,victor,mate);
        
-        System.out.println(insc.getAlumno().getIdAlumno());
-        System.out.println(insc.getMateria().getIdMateria());
-        id.guardarinscripcion(insc);//error en guardar una inscripcion
+        
+        id.guardarinscripcion(insc);
        //FIN DE EJEMPLOS 
        
        
