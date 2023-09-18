@@ -27,7 +27,7 @@ public class InscripcionData {
     }
     
     public void guardarinscripcion(Inscripcion insc){
-        String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria)"
+        String sql = "INSERT INTO `inscripción`(`nota`, `idAlumno`, `idMateria`)"
                 + "VALUES (?, ?, ?)";
         
         try {

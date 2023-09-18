@@ -60,7 +60,7 @@ public class AlumnoData {
     public Alumno buscarAlumno(int id){
         Alumno alumno=null;
         
-        String sql="SELECT dni,apellido,nombre,FechaNac FROM alumno WHERE idAlumno=? AND estado=1";
+        String sql="SELECT dni,apellido,nombre,FechaNac FROM alumnos WHERE idAlumno=? AND estado=1";
         
         PreparedStatement ss=null;
         
@@ -90,7 +90,7 @@ public class AlumnoData {
     public Alumno buscarAlumnoDni(int dni){
         Alumno alumna=null;
         
-        String sql="SELECT idAlumno,dni,apellido,nombre,FechaNac FROM alumno WHERE dni=? AND estado=1";
+        String sql="SELECT idAlumno,dni,apellido,nombre,FechaNac FROM alumnos WHERE dni=? AND estado=1";
         
         PreparedStatement ss=null;
         

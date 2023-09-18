@@ -23,7 +23,7 @@ public class UniversidadEjemplo {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //EJEMPLOS PARA VER SI FUNCIONA LA CONEXION DE BASE DE DATOS ALUMNO DATA
+        //EJEMPLOS PARA VER SI FUNCIONA LA CONEXION DE BASE DE DATOS 
         
         //Alumno juan = new Alumno(1,123123123,"Sanches","victor", LocalDate.of(1980, 4, 25),true);
         //AlumnoData alu= new AlumnoData();
@@ -34,15 +34,30 @@ public class UniversidadEjemplo {
        
        //alu.eliminarAlumno(1);
        
-       Materia matematicas = new Materia(1,"Java",2021,true);
-       MateriaData nuevo = new MateriaData();
+       //PARTE DE PRUEBA DE MATERIA DATA
+       
+       //Materia matematicas = new Materia(1,"Java",2021,true);
+       //MateriaData nuevo = new MateriaData();
        
        //nuevo.guardarMateria(matematicas);
        //nuevo.buscarMateria(1);
        //nuevo.modificarMateria(matematicas);
-       nuevo.eliminarMateria(1);
+       //nuevo.eliminarMateria(1);
        
-       //FIN DE EJEMPLOS ALUMNO DATA
+       //PARTE DE VERIFICACION DE INSCRIPCION DATA
+       
+       AlumnoData ad = new AlumnoData();
+       MateriaData md = new MateriaData();
+       InscripcionData id = new InscripcionData();
+       
+       Alumno victor = ad.obtenerAlumnoPorId(1);
+       Materia mate = md.buscarMateria(3);
+       Inscripcion insc = new Inscripcion(victor,mate,10);
+       
+        System.out.println(insc.getAlumno().getIdAlumno());
+        System.out.println(insc.getMateria().getIdMateria());
+        id.guardarinscripcion(insc);//error en guardar una inscripcion
+       //FIN DE EJEMPLOS 
        
        
        
