@@ -124,8 +124,8 @@ public class MateriaData {
         }
     }
 
-   /* public List[Materia] listarMateria(){
-        List[Materia] materias = new ArrayList[]();
+    public List<Materia> listarMateria(){
+        List<Materia> materias = new ArrayList<>();
         try {
             String sql="SELECT * FROM materia WHERE estado=1";
             PreparedStatement ps=con.prepareStatement(sql);
@@ -143,6 +143,6 @@ public class MateriaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia"+exe.getMessage());
         }
     return materias;
-    }*/
+    }
 }
 

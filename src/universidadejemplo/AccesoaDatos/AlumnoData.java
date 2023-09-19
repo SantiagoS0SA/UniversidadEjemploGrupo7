@@ -116,30 +116,31 @@ public class AlumnoData {
         }
         return alumna;
     }
-/*
-    public List[Alumno] listarAlumnos(){
-        List[Alumno] alumnos = new ArrayList[]();
+
+    public List<Alumno> listarAlumnos(){
+        List<Alumno> alumnos = new ArrayList<>();
         try {
-            String sql="SELECT * FROM alumno Where activo=1";
-            PreparedStatement ps= con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-            while (rs.next()){
-                Alumno alumn=new Alumno();
-                alumn.setIdAlumno(rs.getInt("idAlumno"));
-                alumn.setDni(rs.getInt("dni"));
-                alumn.setApellido(rs.getString("apellido"));
-                alumn.setNombre(rs.getString("nombre"));
-                alumn.setFechaNac(rs.getDate("FechaNac").toLocalDate());
-                alumn.setActivo(rs.getBoolean("activo"));
-                alumnos.add(alumn);
+            String sql="SELECT * FROM alumnos WHERE estado=1";
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ResultSet rs=ps.executeQuery();
+                while (rs.next()){
+                    Alumno alumn=new Alumno();
+                    alumn.setIdAlumno(rs.getInt("idAlumno"));
+                    alumn.setDni(rs.getInt("dni"));
+                    alumn.setApellido(rs.getString("apellido"));
+                    alumn.setNombre(rs.getString("nombre"));
+                    alumn.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                    alumn.setActivo(rs.getInt("estado")==1);
+                    alumnos.add(alumn);
+                    System.out.println(alumnos);
+                }
             }
-            ps.close();
         }catch (SQLException exe){
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia"+exe.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno"+exe.getMessage());
         }
         return alumnos;
         }
-  */  
+    
    
     public void modificarAlumno(Alumno alumno){
     

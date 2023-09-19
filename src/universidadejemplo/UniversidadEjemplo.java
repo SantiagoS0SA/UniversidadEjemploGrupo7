@@ -26,8 +26,9 @@ public class UniversidadEjemplo {
         //EJEMPLOS PARA VER SI FUNCIONA LA CONEXION DE BASE DE DATOS 
         
         //Alumno juan = new Alumno(1,123123123,"Sanches","victor", LocalDate.of(1980, 4, 25),true);
-        //AlumnoData alu= new AlumnoData();
+        AlumnoData alu= new AlumnoData();
         
+        alu.listarAlumnos();
         //alu.guardarAlumno(juan);
                                   
        // alu.modificarAlumno(juan);
@@ -46,16 +47,16 @@ public class UniversidadEjemplo {
        
        //PARTE DE VERIFICACION DE INSCRIPCION DATA
        
-       AlumnoData ad = new AlumnoData();
-       MateriaData md = new MateriaData();
-       InscripcionData id = new InscripcionData();
+       //AlumnoData ad = new AlumnoData();
+       //MateriaData md = new MateriaData();
+       //InscripcionData id = new InscripcionData();
        
-       Alumno victor = ad.obtenerAlumnoPorId(1);
-       Materia mate = md.buscarMateria(1);
-       Inscripcion insc = new Inscripcion(2,victor,mate);
+       //Alumno victor = ad.obtenerAlumnoPorId(1);
+       //Materia mate = md.buscarMateria(1);
+       //Inscripcion insc = new Inscripcion(2,victor,mate);
        
         
-        id.guardarinscripcion(insc);
+        //id.guardarinscripcion(insc);
        //FIN DE EJEMPLOS 
        
        
