@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import universidadejemplo.AccesoaDatos.AlumnoData;
 import universidadejemplo.Entidades.Alumno;
 
@@ -126,7 +127,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jError.setText("Errores encontrado : 0");
+        jError.setText("Error : ");
 
         jLabel7.setText("IdAlumno:");
 
@@ -245,13 +246,14 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             
             if(alu.ValidacionDni(dni)){
                 jError.setForeground(Color.RED);
-                jError.setText("Este dni ya esta en la Base de datos");
+                jError.setText("044: Numero de Dni ya registrado");
                 
                 jNombre.setText("");
                 jApellido.setText("");
                 jDateN.setDate(null);
                 jDni.setText("");
                 jidAlumno.setEditable(true);
+                jidAlumno.setBackground(null);
             }else{
              alumno.setDni(dni);
             alumno.setApellido(apellido);
@@ -272,8 +274,9 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
            jidAlumno.setEditable(true);
             } 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Numero de Dni no valido, profavor chequear el dni ingresado");
+            JOptionPane.showMessageDialog(null, "Numero de Dni ya usado, por favor chequear el dni ingresado");
             jidAlumno.setEditable(true);
+             jidAlumno.setBackground(null);
         } catch(NullPointerException e ){
             JOptionPane.showMessageDialog(null, "Complete los campos vacios. Por Favor");
             jidAlumno.setEditable(true);
@@ -315,7 +318,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                jEliminar.setEnabled(true);
                jAgregar.setEnabled(false);
                jError.setForeground(null);
-               jError.setText("Errores Encontrados: 0");
+               jError.setText("Error:");
            }else{
                JOptionPane.showMessageDialog(null, "Alumno no encontrado");
                
@@ -431,6 +434,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jEliminar.setEnabled(false);
         jAgregar.setEnabled(true);
         jidAlumno.setEditable(false);
+        jidAlumno.setBackground(Color.gray);
+        
     }//GEN-LAST:event_jDniMouseClicked
 
 
