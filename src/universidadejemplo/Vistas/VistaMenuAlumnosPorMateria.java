@@ -5,6 +5,8 @@
  */
 package universidadejemplo.Vistas;
 
+import universidadejemplo.Entidades.Materia;
+
 /**
  *
  * @author Pc
@@ -30,9 +32,9 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtAlumnos = new javax.swing.JTable();
         jalumnoMs = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jaMaterias = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 0));
 
@@ -41,7 +43,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione una materia:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -52,7 +54,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtAlumnos);
 
         jalumnoMs.setText("Salir");
         jalumnoMs.addActionListener(new java.awt.event.ActionListener() {
@@ -60,8 +62,6 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
                 jalumnoMsActionPerformed(evt);
             }
         });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +79,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
                                     .addContainerGap()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jaMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGap(93, 93, 93)
                                     .addComponent(jLabel1))))
@@ -97,7 +97,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jaMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,11 +115,11 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JComboBox<Materia> jaMaterias;
     private javax.swing.JButton jalumnoMs;
+    private javax.swing.JTable jtAlumnos;
     // End of variables declaration//GEN-END:variables
 }
