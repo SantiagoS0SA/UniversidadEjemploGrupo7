@@ -12,10 +12,8 @@
         </group>
         <group>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/AccesoaDatos/AlumnoData.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/UniversidadEjemplo.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/Entidades/Inscripcion.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/AccesoaDatos/MateriaData.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/AccesoaDatos/InscripcionData.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/Vistas/VistaMenuPrincipal.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/Vistas/VistaMenuAlumnos.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/UniversidadEjemploGrupo7/src/universidadejemplo/Entidades/Alumno.java</file>
         </group>
     </open-files>

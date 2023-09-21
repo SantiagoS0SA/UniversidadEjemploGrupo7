@@ -59,9 +59,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jBoolean = new javax.swing.JRadioButton();
         jDateN = new com.toedter.calendar.JDateChooser();
         jError = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jAnuncio = new javax.swing.JLabel();
-        jidAlumno = new javax.swing.JTextField();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -129,9 +127,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
 
         jError.setText("Error : ");
 
-        jLabel7.setText("IdAlumno:");
-
-        jAnuncio.setText("Deseas buscar un alumno ? Ingresa su id");
+        jAnuncio.setText("Deseas buscar un alumno ? Ingresa su dni");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,31 +139,29 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel7)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jBuscar))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jAnuncio)))
-                                .addContainerGap(81, Short.MAX_VALUE))
+                                .addGap(175, 175, 175)
+                                .addComponent(jLabel1)
+                                .addContainerGap(224, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jError)
-                                    .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jBoolean))
-                                .addGap(167, 167, 167))))
+                                    .addComponent(jBoolean)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBuscar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jAnuncio)))
+                                .addGap(83, 83, 83))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -190,44 +184,38 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jAnuncio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jError)
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jidAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jBuscar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jError)
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jBoolean)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6))
-                            .addComponent(jDateN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jEliminar)
-                            .addComponent(jAgregar)
-                            .addComponent(jActualizar)
-                            .addComponent(jSalir)))
-                    .addComponent(jLabel7))
+                            .addComponent(jBoolean)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6))
+                    .addComponent(jDateN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jEliminar)
+                    .addComponent(jAgregar)
+                    .addComponent(jActualizar)
+                    .addComponent(jSalir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -252,8 +240,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 jApellido.setText("");
                 jDateN.setDate(null);
                 jDni.setText("");
-                jidAlumno.setEditable(true);
-                jidAlumno.setBackground(null);
+               
             }else{
              alumno.setDni(dni);
             alumno.setApellido(apellido);
@@ -271,15 +258,15 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 jApellido.setText("");
                 jDateN.setDate(null);
                 jDni.setText("");
-           jidAlumno.setEditable(true);
+     
             } 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Numero de Dni ya usado, por favor chequear el dni ingresado");
-            jidAlumno.setEditable(true);
-             jidAlumno.setBackground(null);
+            
+             
         } catch(NullPointerException e ){
             JOptionPane.showMessageDialog(null, "Complete los campos vacios. Por Favor");
-            jidAlumno.setEditable(true);
+            
         }
       
         
@@ -298,8 +285,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         // TODO add your handling code here:
        try{
-           int id = Integer.parseInt(jidAlumno.getText());
-           Alumno alumn = alu.obtenerAlumnoPorId(id);
+           int dni = Integer.parseInt(jDni.getText());
+           Alumno alumn = alu.buscarAlumnoDni(dni);
             
            if(alumn != null){
            
@@ -361,7 +348,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             int dni = Integer.parseInt(dniText);
             // Crear un nuevo objeto Alumno con los datos actualizados
             Alumno alumnoActualizado = new Alumno();
-            alumnoActualizado.setIdAlumno(Integer.parseInt(jidAlumno.getText())); // Asegúrate de establecer el ID del alumno
+             
             alumnoActualizado.setDni(dni);
             alumnoActualizado.setApellido(apellido);
             alumnoActualizado.setNombre(nombre);
@@ -379,7 +366,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             jDateN.setDate(null);
             jDni.setText("");
             jAgregar.setEnabled(true);
-            jidAlumno.setText("");
+            
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo actualizar. Debe buscar un ID antes de actualizar.");
         }
@@ -396,9 +383,9 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
         
-            int id = Integer.parseInt(jidAlumno.getText());
+            int dni = Integer.parseInt(jDni.getText());
             
-            Alumno eliminarAlumno = alu.obtenerAlumnoPorId(id);
+            Alumno eliminarAlumno = alu.buscarAlumnoDni(dni);
             
             if(eliminarAlumno != null){
                 
@@ -409,14 +396,14 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                         );
                 
                 if(confirmacion == JOptionPane.YES_OPTION){
-                    alu.eliminarAlumno(id);
+                    alu.eliminarAlumno(dni);
                     jDni.setText("");
                     jApellido.setText("");
                     jNombre.setText("");
                     jDateN.setDate(null);
                     jBoolean.setSelected(false);
                     jAgregar.setEnabled(true);
-                    jidAlumno.setText("");
+                   
                 }else{
                     JOptionPane.showMessageDialog(null, "se Cancelo la operacion");
                 }
@@ -433,8 +420,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jActualizar.setEnabled(false);
         jEliminar.setEnabled(false);
         jAgregar.setEnabled(true);
-        jidAlumno.setEditable(false);
-        jidAlumno.setBackground(Color.gray);
+        
         
     }//GEN-LAST:event_jDniMouseClicked
 
@@ -456,10 +442,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jNombre;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JButton jSalir;
-    private javax.swing.JTextField jidAlumno;
     // End of variables declaration//GEN-END:variables
 }

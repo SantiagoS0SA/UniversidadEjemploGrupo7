@@ -57,7 +57,7 @@ public class AlumnoData {
         
     }
     
-    public Alumno buscarAlumno(int id){
+    /*public Alumno buscarAlumno(int id){
         Alumno alumno=null;
         
         String sql="SELECT dni,apellido,nombre,FechaNac FROM alumnos WHERE idAlumno=? AND estado=1";
@@ -85,7 +85,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null,"Error alacceder a la tabla alumno "+xx.getMessage());
         }
         return alumno;
-    }
+    }*/
 
     public Alumno buscarAlumnoDni(int dni){
         Alumno alumna=null;
