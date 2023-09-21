@@ -5,12 +5,17 @@
  */
 package universidadejemplo.Vistas;
 
+import javax.swing.JOptionPane;
+import universidadejemplo.AccesoaDatos.MateriaData;
+import universidadejemplo.Entidades.Materia;
+
 /**
  *
  * @author Pc
  */
 public class VistaMenuMateria extends javax.swing.JInternalFrame {
-
+    private MateriaData mate = new MateriaData();
+    private Materia materia = new Materia();
     /**
      * Creates new form VistaMenuMateria
      */
@@ -32,15 +37,15 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jAgregar = new javax.swing.JButton();
+        jEliminar = new javax.swing.JButton();
+        jActualizar = new javax.swing.JButton();
         jSalirMa = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jBuscar = new javax.swing.JButton();
+        jcodi = new javax.swing.JTextField();
+        jNombre = new javax.swing.JTextField();
+        jAño = new javax.swing.JTextField();
+        jBoolean = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(0, 102, 0));
 
@@ -55,11 +60,11 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado:");
 
-        jButton1.setText("Nuevo");
+        jAgregar.setText("Nuevo");
 
-        jButton2.setText("Eliminar");
+        jEliminar.setText("Eliminar");
 
-        jButton3.setText("Guardar");
+        jActualizar.setText("Guardar");
 
         jSalirMa.setText("Salir");
         jSalirMa.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +73,12 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton5.setText("Buscar");
+        jBuscar.setText("Buscar");
+        jBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +93,7 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(jButton1))
+                                .addComponent(jAgregar))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel2))
@@ -98,22 +108,22 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
+                            .addComponent(jBoolean)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField3))
+                                        .addComponent(jEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jAño))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton3)
+                                    .addComponent(jActualizar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jSalirMa))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextField1)
-                                        .addComponent(jTextField2))
+                                        .addComponent(jcodi)
+                                        .addComponent(jNombre))
                                     .addGap(23, 23, 23)
-                                    .addComponent(jButton5))))))
+                                    .addComponent(jBuscar))))))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -125,25 +135,25 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton5)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBuscar)
+                        .addComponent(jcodi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jRadioButton1))
+                    .addComponent(jBoolean))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(jAgregar)
+                    .addComponent(jEliminar)
+                    .addComponent(jActualizar)
                     .addComponent(jSalirMa))
                 .addContainerGap())
         );
@@ -156,21 +166,56 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jSalirMaActionPerformed
 
+    private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+        // TODO add your handling code here:
+         try{
+           int codigo = Integer.parseInt(jcodi.getText());
+           Materia producto = mate.buscarMateria(codigo);
+            
+           if(producto != null){
+           
+               jcodi.setText(String.valueOf(producto.getIdMateria()));
+               jNombre.setText(producto.getNombre());
+               jAño.setText(String.valueOf(producto.getAnioMateria()));
+               
+            
+               
+               jBoolean.setSelected(producto.isActivo());
+               
+               jAgregar.setEnabled(true);
+               jEliminar.setEnabled(true);
+               jAgregar.setEnabled(false);
+              
+           }else{
+               JOptionPane.showMessageDialog(null, "Materia no encontrada");
+               
+                jcodi.setText("");
+                jNombre.setText("");
+                jAño.setText("");
+                jBoolean.setSelected(false);
+                
+                
+           }
+       }catch(NumberFormatException e){
+           JOptionPane.showMessageDialog(null, "codigo no encontrado");
+       }
+    }//GEN-LAST:event_jBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jActualizar;
+    private javax.swing.JButton jAgregar;
+    private javax.swing.JTextField jAño;
+    private javax.swing.JRadioButton jBoolean;
+    private javax.swing.JButton jBuscar;
+    private javax.swing.JButton jEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JTextField jNombre;
     private javax.swing.JButton jSalirMa;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jcodi;
     // End of variables declaration//GEN-END:variables
 }
