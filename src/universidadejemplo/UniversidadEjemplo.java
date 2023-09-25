@@ -58,7 +58,25 @@ public class UniversidadEjemplo {
         
         //id.guardarinscripcion(insc);
         //id.actualizarNotas(1, 1, 10);
-        id.borrarInscriptoMateriaAlumno(1, 1);
+        //id.borrarInscriptoMateriaAlumno(1, 1);
+        
+//        for(Inscripcion inscripto : id.obtenerInscripciones()){
+//            
+//            System.out.println("id "+ inscripto.getIdInscripcion());
+//            System.out.println("nota "+inscripto.getNota());
+//            System.out.println("idAlumno "+inscripto.getAlumno().getApellido());
+//            System.out.println("idMateria "+inscripto.getMateria().getNombre());
+//            
+//        }
+
+
+for(Materia alu : id.obtenerMateriasNoCursadas(1)){
+    
+    System.out.println("nombre: "+ alu.getNombre());
+
+
+}
+        
        //FIN DE EJEMPLOS 
        
        
