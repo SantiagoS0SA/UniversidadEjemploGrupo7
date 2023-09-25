@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadejemplo.Entidades.Inscripcion;
 
@@ -70,7 +72,47 @@ public class InscripcionData {
         
     }
     
+    public void actualizarNotas(int idAlumno, int idMateria, double nota){
     
+        String sql = "UPDATE inscripción SET nota = ? WHERE idAlumno = ? and idMateria = ? ";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDouble(1, nota);
+            ps.setInt(2, idAlumno);
+            ps.setInt(3, idMateria);
+            int fila = ps.executeUpdate();
+            
+            if(fila >0){
+                
+                JOptionPane.showMessageDialog(null, "Nota Actualizada");
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Inscripcion"+ ex);
+        }
+    }
+    
+    public void borrarInscriptoMateriaAlumno(int idAlumno, int idMateria){
+    
+        String sql = "DELETE FROM inscripción WHERE idAlumno = ? AND idMateria = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ps.setInt(2, idMateria);
+            
+            int fila = ps.executeUpdate();
+            
+            if(fila >0){
+                JOptionPane.showMessageDialog(null, "Fila eliminada con exito");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Inscripcion"+ ex);
+        }
+    }
     
     
 }
