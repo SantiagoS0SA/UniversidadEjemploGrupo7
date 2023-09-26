@@ -136,7 +136,7 @@ public class MateriaData {
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
                 materia.setActivo(rs.getInt("estado")==1);
-                //materia.(materia);
+                materias.add(materia);
             }
             ps.close();
         }catch (SQLException exe){
