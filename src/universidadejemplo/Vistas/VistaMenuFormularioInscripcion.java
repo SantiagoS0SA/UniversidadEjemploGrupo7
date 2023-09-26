@@ -5,17 +5,7 @@
  */
 package universidadejemplo.Vistas;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadejemplo.AccesoaDatos.AlumnoData;
 import universidadejemplo.AccesoaDatos.Conexion;

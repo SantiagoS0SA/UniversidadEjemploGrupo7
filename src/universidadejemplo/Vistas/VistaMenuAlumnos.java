@@ -20,7 +20,7 @@ import universidadejemplo.Entidades.Alumno;
  * @author Pc
  */
 public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
-    private Alumno alumno = new Alumno();
+    private Alumno alumno = null;
     private AlumnoData alu = new AlumnoData();
     /**
      * Creates new form VistaMenuAlumnos
