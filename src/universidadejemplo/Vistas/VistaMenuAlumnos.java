@@ -242,7 +242,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 jDni.setText("");
                
             }else{
-             alumno.setDni(dni);
+            alumno.setDni(dni);
             alumno.setApellido(apellido);
             alumno.setNombre(nombre);
             alumno.setFechaNac(fechaN);

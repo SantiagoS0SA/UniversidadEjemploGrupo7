@@ -5,6 +5,7 @@
  */
 package universidadejemplo.Vistas;
 
+import javax.swing.table.DefaultTableModel;
 import universidadejemplo.Entidades.Materia;
 
 /**
@@ -13,11 +14,13 @@ import universidadejemplo.Entidades.Materia;
  */
 public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form VistaMenuAlumnosPorMateria
-     */
+    private DefaultTableModel modelo= new DefaultTableModel();
+   
+    
     public VistaMenuAlumnosPorMateria() {
         initComponents();
+        armarCabecera();
+             
     }
 
     /**
@@ -34,7 +37,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtAlumnos = new javax.swing.JTable();
         jalumnoMs = new javax.swing.JButton();
-        jaMaterias = new javax.swing.JComboBox<>();
+        jcMaterias = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 0));
 
@@ -79,7 +82,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
                                     .addContainerGap()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jaMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addGap(93, 93, 93)
                                     .addComponent(jLabel1))))
@@ -97,7 +100,7 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jaMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -118,8 +121,17 @@ public class VistaMenuAlumnosPorMateria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<Materia> jaMaterias;
     private javax.swing.JButton jalumnoMs;
+    private javax.swing.JComboBox<Materia> jcMaterias;
     private javax.swing.JTable jtAlumnos;
     // End of variables declaration//GEN-END:variables
+
+private void armarCabecera(){
+ 
+    modelo.addColumn("ID");
+    modelo.addColumn("DNI");
+    modelo.addColumn("Apellido");
+    modelo.addColumn("Nombre");
+    jtAlumnos.setModel(modelo);
+}
 }
