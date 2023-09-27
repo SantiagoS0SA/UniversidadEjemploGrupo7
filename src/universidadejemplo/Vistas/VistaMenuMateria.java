@@ -5,6 +5,7 @@
  */
 package universidadejemplo.Vistas;
 
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import universidadejemplo.AccesoaDatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
@@ -15,7 +16,7 @@ import universidadejemplo.Entidades.Materia;
  */
 public class VistaMenuMateria extends javax.swing.JInternalFrame {
     private MateriaData mate = new MateriaData();
-    private Materia materia = new Materia();
+    private Materia materia = null;
     /**
      * Creates new form VistaMenuMateria
      */
@@ -61,10 +62,25 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado:");
 
         jAgregar.setText("Nuevo");
+        jAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAgregarActionPerformed(evt);
+            }
+        });
 
         jEliminar.setText("Eliminar");
+        jEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEliminarActionPerformed(evt);
+            }
+        });
 
         jActualizar.setText("Guardar");
+        jActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jActualizarActionPerformed(evt);
+            }
+        });
 
         jSalirMa.setText("Salir");
         jSalirMa.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +93,12 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
         jBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBuscarActionPerformed(evt);
+            }
+        });
+
+        jcodi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcodiActionPerformed(evt);
             }
         });
 
@@ -169,37 +191,91 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
         // TODO add your handling code here:
          try{
-           int codigo = Integer.parseInt(jcodi.getText());
-           Materia producto = mate.buscarMateria(codigo);
-            
-           if(producto != null){
-           
-               jcodi.setText(String.valueOf(producto.getIdMateria()));
-               jNombre.setText(producto.getNombre());
-               jAño.setText(String.valueOf(producto.getAnioMateria()));
-               
-            
-               
-               jBoolean.setSelected(producto.isActivo());
-               
-               jAgregar.setEnabled(true);
-               jEliminar.setEnabled(true);
-               jAgregar.setEnabled(false);
-              
-           }else{
-               JOptionPane.showMessageDialog(null, "Materia no encontrada");
-               
-                jcodi.setText("");
-                jNombre.setText("");
-                jAño.setText("");
-                jBoolean.setSelected(false);
-                
-                
-           }
-       }catch(NumberFormatException e){
-           JOptionPane.showMessageDialog(null, "codigo no encontrado");
-       }
+        Integer cod=Integer.parseInt(jcodi.getText());
+        Materia mat = mate.buscarMateria(cod);
+        if(mat!=null){ 
+            jNombre.setText(mat.getNombre());
+            jAño.setText(mat.getAnioMateria()+"");                    
+            jBoolean.setSelected(mat.isActivo());            
+            }   
+        }catch(NumberFormatException nf){
+          JOptionPane.showMessageDialog(this, "Debe ingresar un codigo valido");
+        
+        }
     }//GEN-LAST:event_jBuscarActionPerformed
+
+    private void jActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActualizarActionPerformed
+        try{
+             
+             Integer cod=Integer.parseInt(jcodi.getText());
+             String nombre=jNombre.getText();
+             int año =Integer.parseInt(jAño.getText());
+             if (nombre.isEmpty()|| año==0){
+                 JOptionPane.showMessageDialog(this, "No debe entrar campos vacios");
+                 return;
+              }
+             Boolean estado=jBoolean.isSelected();
+     
+           if (materia==null){
+               
+               materia=new Materia(cod, nombre, año, estado);
+               mate.guardarMateria(materia);
+           
+           }else{
+              materia.setIdMateria(cod);
+              materia.setNombre(nombre);
+              materia.setAnioMateria(año);
+              materia.setActivo(estado);
+               
+              
+              mate.modificarMateria(materia); 
+              limpiarDatos();
+          
+           }
+        }catch(NumberFormatException nf){
+          JOptionPane.showMessageDialog(this, "Debe ingresar un codigo valido");
+        }
+    }//GEN-LAST:event_jActualizarActionPerformed
+
+    private void jAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgregarActionPerformed
+        if (jNombre.getText().isEmpty()|| jAño.getText().isEmpty() ){
+             
+           JOptionPane.showInternalMessageDialog(this, "los campos no deben estas vaciosssssssss");  
+           return; 
+         }  
+         
+         String nom=jNombre.getText();
+         int anno= Integer.parseInt(jAño.getText());
+         if(!(jBoolean.isSelected())){
+         JOptionPane.showMessageDialog(this, "Debe activar el estado de la materia");
+         }else{
+         boolean boton = jBoolean.isSelected();
+         
+         materia.setNombre(nom);
+         materia.setAnioMateria(anno);
+         materia.setActivo(boton);
+            
+         mate.guardarMateria(materia);
+         
+         limpiarDatos();
+         
+         }
+    }//GEN-LAST:event_jAgregarActionPerformed
+
+    private void jEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEliminarActionPerformed
+        if(materia!=null){
+        mate.eliminarMateria(materia.getIdMateria());
+        materia=null;
+        limpiarDatos();
+             
+        }else{
+       JOptionPane.showMessageDialog(this, "No hay materia seleccionada");
+       }
+    }//GEN-LAST:event_jEliminarActionPerformed
+
+    private void jcodiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcodiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcodiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -218,4 +294,12 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
     private javax.swing.JButton jSalirMa;
     private javax.swing.JTextField jcodi;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarDatos(){
+
+  jNombre.setText("");
+  jAño.setText("");
+  jBoolean.setSelected(false);
+  jcodi.setText("");
+}
 }
