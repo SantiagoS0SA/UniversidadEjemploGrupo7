@@ -101,7 +101,7 @@ public class MateriaData {
             int exito = ps.executeUpdate();
             
             if(exito == 1){
-                JOptionPane.showMessageDialog(null,"Alumno Modificado");
+                JOptionPane.showMessageDialog(null,"Materia Modificada");
             }
             }catch (SQLException ee){
                 JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");

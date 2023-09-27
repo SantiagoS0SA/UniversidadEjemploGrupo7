@@ -1,7 +1,8 @@
 package universidadejemplo.Vistas;
 
-import javax.swing.JComboBox;
+
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import universidadejemplo.AccesoaDatos.AlumnoData;
 import universidadejemplo.AccesoaDatos.Conexion;
@@ -21,19 +22,31 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
     private MateriaData mData;
     private AlumnoData aData;
     
-    private DefaultTableModel modelo;
+   private DefaultTableModel modelo = new DefaultTableModel(){
+        
+        @Override
+        public boolean isCellEditable(int fila, int columna){
+            if(columna == 2) {
+                return true;
+            }
+            return false;
+        }
+    
+    };
 
     public VistaMenuActualizacionNotas() {
         initComponents();
         aData = new AlumnoData();
         listaA = (ArrayList<Alumno>)aData.listarAlumnos();
-        modelo = new DefaultTableModel();
+        
         inscData = new InscripcionData();
         mData = new MateriaData();
         
         cargaAlumnos();
         armarCabeceraTabla();
-        cargaDatosInscriptas();
+        
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -43,8 +56,8 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jnotas = new javax.swing.JTable();
+        jGuardarN = new javax.swing.JButton();
         jSalirM = new javax.swing.JButton();
         jcbListaAlumnos = new javax.swing.JComboBox<>();
 
@@ -55,7 +68,7 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un alumno:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jnotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,9 +79,14 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jnotas);
 
-        jButton1.setText("Guardar");
+        jGuardarN.setText("Guardar");
+        jGuardarN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jGuardarNActionPerformed(evt);
+            }
+        });
 
         jSalirM.setText("Salir");
         jSalirM.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +95,11 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jcbListaAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbListaAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbListaAlumnosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,7 +121,7 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jButton1)
+                        .addComponent(jGuardarN)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                         .addComponent(jSalirM)))
                 .addContainerGap())
@@ -117,7 +139,7 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jGuardarN)
                     .addComponent(jSalirM))
                 .addContainerGap())
         );
@@ -129,15 +151,28 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
            dispose();
     }//GEN-LAST:event_jSalirMActionPerformed
 
+    private void jcbListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosActionPerformed
+        // TODO add your handling code here:
+        cargaDatosInscriptas();
+    }//GEN-LAST:event_jcbListaAlumnosActionPerformed
+
+    private void jGuardarNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGuardarNActionPerformed
+        // TODO add your handling code here:
+        Materia nuevaNota = new Materia();
+        nuevaNota.getIdMateria();
+        
+        Actualizardatos();
+    }//GEN-LAST:event_jGuardarNActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jGuardarN;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jSalirM;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> jcbListaAlumnos;
+    private javax.swing.JComboBox<Alumno> jcbListaAlumnos;
+    private javax.swing.JTable jnotas;
     // End of variables declaration//GEN-END:variables
 
     private void cargaAlumnos() {
@@ -154,15 +189,61 @@ public class VistaMenuActualizacionNotas extends javax.swing.JInternalFrame {
         for(Object it: filaCabecera){
             modelo.addColumn(it);
         }
-        jTable1.setModel(modelo);
+        jnotas.setModel(modelo);
     }
     
     private void cargaDatosInscriptas(){
         //borrarFilaTabla();
         Alumno selec= (Alumno)jcbListaAlumnos.getSelectedItem();
+        modelo.setRowCount(0);
+        
         listaM = (ArrayList<Materia>) inscData.obtenerMateriaCursadas(selec.getIdAlumno());
-        for(Materia m: listaM){
-            modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getAnioMateria()});
+        
+        if(!listaM.isEmpty()){
+            for(Materia m: listaM){
+                modelo.addRow(new Object[] {m.getIdMateria(), m.getNombre(), m.getI().getNota()});
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Alumno Seleccionado, pero no esta inscripto en la ninguna materia");
+        
+        }
+    }
+    
+    public void Actualizardatos(){
+        int fila = jnotas.getSelectedRow();
+        
+        if(fila <0 || fila>= jnotas.getRowCount()){
+            System.out.println("mal");
+        
+        }
+        
+        int idmateria = (int) jnotas.getValueAt(fila, 0);
+        
+        Materia mat = mData.buscarMateria(idmateria);
+        Alumno selec = (Alumno) jcbListaAlumnos.getSelectedItem();
+        double nto = Double.parseDouble(jnotas.getValueAt(fila, 2).toString());
+        
+        try {
+            Inscripcion ins = new Inscripcion();
+            
+            ins.setNota(nto);
+            ins.setAlumno(aData.obtenerAlumnoPorId(selec.getIdAlumno()));
+            ins.setMateria(mat);
+            
+           int idAlumno = selec.getIdAlumno();
+
+            inscData.actualizarNotas(idAlumno, idmateria, nto);
+       
+            jnotas.setValueAt(nto, fila, 2);
+            
+            JOptionPane.showMessageDialog(null, "nota del alumno: "+ selec.getApellido()+ " fue Actualizada con exito");
+
+        } catch (ClassCastException e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar la nota: " + e.getLocalizedMessage());
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Error: la nota ingresada debe ser un número válido");
+        } catch (NullPointerException e) {
+        JOptionPane.showMessageDialog(null, "Error: la materia no pudo ser encontrada en la base de datos");
         }
     }
 }

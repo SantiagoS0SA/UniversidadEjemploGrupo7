@@ -178,7 +178,7 @@ public class InscripcionData {
     
         ArrayList<Materia> materia = new ArrayList<>();
         
-        String sql = "SELECT inscripción.idMateria, nombre, año FROM inscripción, "
+        String sql = "SELECT inscripción.idMateria, nombre, inscripción.nota FROM inscripción, "
                 + " materia WHERE inscripción.idMateria = materia.idMateria"
                 + " AND inscripción.idAlumno = ?;";
         
@@ -190,16 +190,20 @@ public class InscripcionData {
             while(rs.next()){
             
                 Materia mate = new Materia();
+                Inscripcion insc = new Inscripcion();
                 
                 mate.setIdMateria(rs.getInt("idMateria"));
                 mate.setNombre(rs.getString("nombre"));
-                mate.setAnioMateria(rs.getInt("año"));
+                insc.setNota(rs.getInt("nota"));
+                mate.setI(insc);
                 materia.add(mate);
             
             }
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla al Inscripcion"+ ex);
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "error"+e.getMessage());
         }
         return materia;
     

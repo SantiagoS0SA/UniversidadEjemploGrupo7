@@ -11,7 +11,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.border.Border;
 import universidadejemplo.AccesoaDatos.AlumnoData;
 import universidadejemplo.Entidades.Alumno;
 
@@ -231,6 +230,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             boolean boton = jBoolean.isSelected();
             LocalDate fechaN = jDateN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             
+            //System.out.println("datos obtenidos");
             
             if(alu.ValidacionDni(dni)){
                 jError.setForeground(Color.RED);
@@ -242,13 +242,17 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
                 jDni.setText("");
                
             }else{
-             alumno.setDni(dni);
-            alumno.setApellido(apellido);
-            alumno.setNombre(nombre);
-            alumno.setFechaNac(fechaN);
-            alumno.setActivo(boton);
+                //System.out.println("creando al alumno Agregado ");
+                
+               Alumno gurdarAlumno = new Alumno(); 
+               
+             gurdarAlumno.setDni(dni);
+            gurdarAlumno.setApellido(apellido);
+            gurdarAlumno.setNombre(nombre);
+            gurdarAlumno.setFechaNac(fechaN);
+            gurdarAlumno.setActivo(boton);
             
-            alu.guardarAlumno(alumno);
+            alu.guardarAlumno(gurdarAlumno);
             
             jError.setForeground(Color.GREEN);
             jError.setText("No se encontro errores");
@@ -265,7 +269,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
             
              
         } catch(NullPointerException e ){
-            JOptionPane.showMessageDialog(null, "Complete los campos vacios. Por Favor");
+            JOptionPane.showMessageDialog(null, "Complete los campos vacios. Por Favor " + e.getLocalizedMessage());
             
         }
       
@@ -275,6 +279,7 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
 
     private void jDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDniActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_jDniActionPerformed
 
     private void jSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalirActionPerformed
@@ -421,6 +426,8 @@ public class VistaMenuAlumnos extends javax.swing.JInternalFrame {
         jEliminar.setEnabled(false);
         jAgregar.setEnabled(true);
         
+        jError.setForeground(null);
+        jError.setText("Error:");
         
     }//GEN-LAST:event_jDniMouseClicked
 

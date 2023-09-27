@@ -192,12 +192,14 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
          try{
         Integer cod=Integer.parseInt(jcodi.getText());
+        jAgregar.setEnabled(false);
         Materia mat = mate.buscarMateria(cod);
         if(mat!=null){ 
             jNombre.setText(mat.getNombre());
             jAño.setText(mat.getAnioMateria()+"");                    
             jBoolean.setSelected(mat.isActivo());            
             }   
+        
         }catch(NumberFormatException nf){
           JOptionPane.showMessageDialog(this, "Debe ingresar un codigo valido");
         
@@ -219,8 +221,9 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
            if (materia==null){
                
                materia=new Materia(cod, nombre, año, estado);
-               mate.guardarMateria(materia);
-           
+               mate.modificarMateria(materia);
+               limpiarDatos();
+               jAgregar.setEnabled(true);
            }else{
               materia.setIdMateria(cod);
               materia.setNombre(nombre);
@@ -267,7 +270,7 @@ public class VistaMenuMateria extends javax.swing.JInternalFrame {
         mate.eliminarMateria(materia.getIdMateria());
         materia=null;
         limpiarDatos();
-             
+         jAgregar.setEnabled(true);    
         }else{
        JOptionPane.showMessageDialog(this, "No hay materia seleccionada");
        }

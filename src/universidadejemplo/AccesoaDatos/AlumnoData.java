@@ -132,7 +132,7 @@ public class AlumnoData {
                     alumn.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
                     alumn.setActivo(rs.getInt("estado")==1);
                     alumnos.add(alumn);
-                    System.out.println(alumnos);
+                    //System.out.println(alumnos);
                 }
             }
         }catch (SQLException exe){
@@ -247,4 +247,7 @@ public boolean ValidacionDni(int dni){
         }
         return alumno;
     }
+    
+   
+    
 }
